@@ -19,6 +19,25 @@ function atualizarTela(){
     }
 }
 
+function porcentagem() {
+    if (visorTela === "" || numAtual === "0" || visorTela.endsWith(" ") || numAnteriores.length === 0) return;
+
+    //apaga o numero do visor
+    let tamNumAtual = numAtual.length;
+    visorTela = visorTela.slice(0, -tamNumAtual)
+
+    //calcular porcentagem
+    let j = numAnteriores.length - 1;
+
+    let numAtualFloat = parseFloat(numAtual);
+    let calculoPorcentagem = (numAnteriores[j]*numAtualFloat)/100;
+    
+    //atribuir numAtual
+    numAtual = calculoPorcentagem.toString();
+    visorTela += numAtual;
+    atualizarTela();
+}
+
 function del(){
     if (visorTela === "") return;
 
@@ -32,7 +51,7 @@ function del(){
         resultados.splice(i,1);
         operadores.splice(o,1);
 
-        visorTela = visorTela.substring(0, visorTela.length - 3);
+        visorTela = visorTela.slice(0, -3);
 
         //if(resultado === null) {
         //    numAtual = numAnteriores;
@@ -40,9 +59,11 @@ function del(){
         //}
 
     } else {
-        visorTela = visorTela.substring(0, visorTela.length - 1);
-        numAtual = numAtual.substring(0, numAtual.length - 1) || "";
+        visorTela = visorTela.slice(0, -1);
+        numAtual = numAtual.slice(0, - 1) || "";
     }
+
+    if (numAtual === "" && numAnteriores.length === 0) ce();
 
     
 
@@ -54,8 +75,18 @@ function del(){
     atualizarTela()
 }
 
-//function positivoOuNegativo {  
-//}
+function positivoOuNegativo() { 
+    if (visorTela.endsWith(" ")) return;
+
+    let tamNumAtual = numAtual.length;
+
+    numAtual = numAtual.startsWith("-")? numAtual.slice(1) : "-" + numAtual;
+
+    visorTela = visorTela.slice(0, -tamNumAtual) //remove o num atual
+    visorTela += numAtual;
+    atualizarTela();
+    
+}
 
 function ce(){
     visorTela = "";
@@ -112,10 +143,6 @@ function addPonto(){
 }
 
 function addNumero(num) {
-    //if (visorTela === resultado) {
-    //    visorTela = "";
-    //    resultado = null;
-    //} 
 
     if (resultadoFinal !== null) {
         ce();
@@ -136,6 +163,8 @@ function addNumero(num) {
 }
 
 function calcularTudo() {
+    if (visorTela === "") return;
+    
     let o = operadores.length - 1;
     calcular(operadores[o])
 
@@ -152,7 +181,7 @@ function calcularTudo() {
 
     visorTela = resultadoFinal.toString();
     
-    numAtual = resultadoFinal;
+    numAtual = resultadoFinal.toString();
     resultados = [];
     numAnteriores = [];
     // mantem o resultado final
