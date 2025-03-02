@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+
+body {
+    font-family: 'DM Mono', 'Courier New', Courier, monospace;
+    background-color: #c5d9f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+button {
+    font-family: 'DM Mono', 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    font-size: 1.2em;
+    background-color: #c5d9f7;
+    height: 2.5em;
+    width: 3.5em;
+    border-radius: 5px;
+    margin: 10px 4px;
+}
+
+button:hover {
+    background-color: #6b76a1;
+}
+
+.container {
+    background-color: #111420;
+    height: 30em;
+    width: 20em;
+    border-radius: 30px;
+    padding: 2em;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.tela {
+    font-weight: bolder;
+    font-size: 1.5em;
+    background-color: #a0b5d4;
+    width: 100%;
+    border-radius: 5px;
+    padding: 0 10px 0 10px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+}
+
+#tela {
+    max-width: 100%; /* Evita que o texto ultrapasse a tela */
+    word-break: break-all; /* Força quebra em palavras grandes */
+    overflow: hidden; /* Evita que o texto vaze da tela */
+    text-align: right; /* Garante que os números fiquem alinhados à direita */
+}
+
+.botoes {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    padding: 2em;
+}
+
+.igual {
+    background-color: #b35a07;
+    color: #c5d9f7;
+}
+
+.igual:hover {
+    background-color: rgb(95, 28, 1);
+}
+
+.icon {
+    width: 60%;
+    margin: 5px 0;
+}
