@@ -5,8 +5,8 @@ let resultados = [];
 
 let numAtual = "";
 let visorTela = "";
-let numAnterior = [];
-let operador = "";
+let numAnteriores = [];
+let operadores = [];
 
 let tamResultados;
 let resultadoFinal;
@@ -22,23 +22,21 @@ function atualizarTela(){
 function del(){
     if (visorTela === "") return;
 
-    tamResultados = resultados.length;
-    let i = tamResultados - 1;
-
-    let tamNumAnterior = numAnterior.length;
-    let j = tamNumAnterior - 1;
+    let i = resultados.length - 1;
+    let j = numAnteriores.length - 1;
+    let o = operadores.length - 1;
 
     if (visorTela.endsWith(" ")) {
-        numAtual = numAnterior[j].toString();
-        numAnterior.splice(j,1);
+        numAtual = numAnteriores[j].toString();
+        numAnteriores.splice(j,1);
         resultados.splice(i,1);
+        operadores.splice(o,1);
 
         visorTela = visorTela.substring(0, visorTela.length - 3);
-        operador = "";
 
         //if(resultado === null) {
-        //    numAtual = numAnterior;
-        //    numAnterior = null;
+        //    numAtual = numAnteriores;
+        //    numAnteriores = null;
         //}
 
     } else {
@@ -51,10 +49,13 @@ function del(){
     console.log("--- função deletar ---");
     console.log("resultados: " + resultados);
     console.log("num atual:" + numAtual);
-    console.log("num anterior:" + numAnterior);
-    console.log("operador:" + operador);
+    console.log("num anterior:" + numAnteriores);
+    console.log("operadores:" + operadores);
     atualizarTela()
 }
+
+//function positivoOuNegativo {  
+//}
 
 function ce(){
     visorTela = "";
@@ -63,8 +64,8 @@ function ce(){
 
     numAtual = "";
     visorTela = "";
-    numAnterior = [];
-    operador = "";
+    numAnteriores = [];
+    operadores = [];
 
     tamResultados = null;
     resultadoFinal = null;
@@ -78,23 +79,24 @@ function addOperador(op) {
     if (numAtual === "" && resultado === null) return;
     if (visorTela.endsWith(".")) return;
     
-    numAnterior.push(parseFloat(numAtual));
+    numAnteriores.push(parseFloat(numAtual));
 
-    if (numAnterior.length > 1) {
+    operadores.push(op);
+
+    if (numAnteriores.length > 1) {
         calcular(op);
     } 
 
     visorTela += " " + op + " ";
-    operador = op
-
+    
     numAtual = "";
     resultadoFinal = null;
 
-    console.log("--- função operador ---");
+    console.log("--- função operadores ---");
     console.log("resultados: " + resultados);
     console.log("num atual:" + numAtual);
-    console.log("num anterior:" + numAnterior);
-    console.log("operador:" + operador);
+    console.log("num anterior:" + numAnteriores);
+    console.log("operadores:" + operadores);
 
     atualizarTela();
 
@@ -127,19 +129,20 @@ function addNumero(num) {
     console.log("--- função addnumero ---");
     console.log("resultados: " + resultados);
     console.log("num atual:" + numAtual);
-    console.log("num anterior:" + numAnterior);
-    console.log("operador:" + operador);
+    console.log("num anterior:" + numAnteriores);
+    console.log("operadores:" + operadores);
     
     atualizarTela();
 }
 
 function calcularTudo() {
-    calcular(operador)
+    let o = operadores.length - 1;
+    calcular(operadores[o])
 
     console.log("--- função calculartudo ---");
     console.log("resultados: " + resultados);
     console.log("num atual:" + numAtual)
-    console.log("num anterior:" + numAnterior)
+    console.log("num anterior:" + numAnteriores)
 
     tamResultados = resultados.length;
     let i = tamResultados - 1;
@@ -151,7 +154,7 @@ function calcularTudo() {
     
     numAtual = resultadoFinal;
     resultados = [];
-    numAnterior = [];
+    numAnteriores = [];
     // mantem o resultado final
     atualizarTela();
 }
@@ -164,16 +167,16 @@ function calcular(op) {
     if (tamResultados === 0){
         switch (op) {
             case "+": 
-                resultado = numAnterior[0] + numAtualFloat;
+                resultado = numAnteriores[0] + numAtualFloat;
                 break;
             case "-": 
-                resultado = numAnterior[0] - numAtualFloat;
+                resultado = numAnteriores[0] - numAtualFloat;
                 break;
             case "×": 
-                resultado = numAnterior[0] * numAtualFloat;
+                resultado = numAnteriores[0] * numAtualFloat;
                 break;
             case "÷": 
-                resultado = numAnterior[0] / numAtualFloat;
+                resultado = numAnteriores[0] / numAtualFloat;
                 break;
             default:
                 break;
@@ -203,11 +206,10 @@ function calcular(op) {
     console.log("--- função calcular ---");
     console.log("resultados: " + resultados);
     console.log("num atual:" + numAtual);
-    console.log("num anterior:" + numAnterior);
-    console.log("operador:" + operador);
+    console.log("num anterior:" + numAnteriores);
+    console.log("operadores:" + operadores);
 
     numAtual = "";
-    operador = "";
 
     
 }
