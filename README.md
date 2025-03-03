@@ -1,5 +1,5 @@
 # Calculadora
-![image](https://github.com/user-attachments/assets/0bf1dab2-e5da-487d-801d-80435aa3a72f)
+![image](https://github.com/user-attachments/assets/f093f849-0863-409f-a6fc-fabb804f34cb)
 
 Esse é apenas um pequeno projeto feito com HTML, CSS e Javascript com o intuito de aprimorar essas tecnologias.
 
