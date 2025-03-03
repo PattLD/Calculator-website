@@ -1,7 +1,7 @@
 # Calculadora
 ![image](https://github.com/user-attachments/assets/0bf1dab2-e5da-487d-801d-80435aa3a72f)
 
-Esse é apenas um pequeno projeto feito com HTML, CSS e Javascript para que eu aprenda a primorar essas tecnologias.
+Esse é apenas um pequeno projeto feito com HTML, CSS e Javascript com o intuito de aprimorar essas tecnologias.
 
 ## Teste a calculadora no link abaixo!
 
